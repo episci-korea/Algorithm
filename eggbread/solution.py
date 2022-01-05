@@ -91,11 +91,6 @@ Time : n
 Solution : Queue
 """
 def solution_20220104(priorities, location):
-    """
-    프로그래머스 : 프린터
-    Θ(n)
-    Queue 사용 문제
-    """
     answer = 0
     while True:
         if len(priorities) < 2:
@@ -117,6 +112,39 @@ def solution_20220104(priorities, location):
                     location = len(priorities)
                 priorities.append(value)
     return answer
+
+"""
+Problem : Programmers N으로 표현 lv3
+Time : 
+Solution : DP
+"""
+def solution_20220105(N, number):
+
+    sets = [set()]
+    answer = 9
+    for i in range(1, 9):
+        sets.append(set())
+        sets[i].add(int(str(N) * i))
+    if number == N:
+        return 1
+    for i in range(2, 8):
+        for j in range(1, i):
+            for a in sets[j]:
+                for b in sets[i - j]:
+                    sets[i].add(a + b)
+                    sets[i].add(a - b)
+                    sets[i].add(a * b)
+                    if b:
+                        sets[i].add(a // b)
+        if number in sets[i]:
+            if answer > i:
+                answer = i
+            break
+
+    if answer == 9:
+        return -1
+    else:
+        return answer
 if __name__ == "__main__":
     test = [["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"], ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"], ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]
     print(solution(test))
