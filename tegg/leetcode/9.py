@@ -18,6 +18,6 @@ class Solution:
 
 
 sol = Solution()
-print(sol.isPalindrome(121))
-print(sol.isPalindrome(-121))
-print(sol.isPalindrome(10))
+assert sol.isPalindrome(121) is True
+assert sol.isPalindrome(-121) is False
+assert sol.isPalindrome(10) is False
