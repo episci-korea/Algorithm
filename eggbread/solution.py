@@ -145,6 +145,29 @@ def solution_20220105(N, number):
         return -1
     else:
         return answer
+
+"""
+Problem : Programmers 게임 맵 최단거리 lv2
+Time : n
+Solution : BFS, 방문체크를 큐에 넣을 때 해야 효율성이 올라간다.
+"""
+from collections import deque
+def solution_20220106(maps):
+    n = len(maps)
+    m = len(maps[0])
+    visited = [[0]*m for _ in range(n)]
+    q = deque([(0,0)])
+    direction = [[1,0],[-1,0],[0,1],[0,-1]]
+    while q:
+        y, x = q.popleft()
+        for vy, vx in direction:
+            nx, ny = x + vx, y + vy
+            if 0 <= nx < m and 0 <= ny < n:
+                if not visited[ny][nx] and maps[ny][nx]:
+                    maps[ny][nx] = maps[y][x] + 1
+                    visited[ny][nx] = 1
+                    q.append((ny,nx))
+    return maps[-1][-1] if maps[-1][-1] != 1 else -1
 if __name__ == "__main__":
-    test = [["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"], ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"], ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]
+    test = [[1,0,1,1,1],[1,1,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]
     print(solution(test))
