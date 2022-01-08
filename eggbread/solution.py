@@ -168,6 +168,18 @@ def solution_20220106(maps):
                     visited[ny][nx] = 1
                     q.append((ny,nx))
     return maps[-1][-1] if maps[-1][-1] != 1 else -1
+"""
+Problem : Programmers 나머지가 1이 되는 수 찾기 lv1
+Time : n^0.5
+Solution : divisor
+"""
+def solution_20220108(n):
+    for i in range(2, int((n-1) ** (1 / 2)) + 1):
+        if not (n-1) % i:
+            return i
+    return n - 1
+
+
 if __name__ == "__main__":
     test = [[1,0,1,1,1],[1,1,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]
-    print(solution(test))
+    print(solution(10))
