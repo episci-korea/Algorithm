@@ -179,7 +179,16 @@ def solution_20220108(n):
             return i
     return n - 1
 
+"""
+Problem : Programmers 최소직사각형 lv1
+Time : n
+Solution : Search
+"""
+def solution(sizes):
+    max_width = max(max(size) for size in sizes)
+    max_height = max(min(size) for size in sizes)
+    return max_height * max_width
 
 if __name__ == "__main__":
-    test = [[1,0,1,1,1],[1,1,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]
-    print(solution(10))
+    test = [[60, 50], [30, 70], [60, 30], [80, 40]]
+    print(solution(test))
