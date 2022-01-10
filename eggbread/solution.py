@@ -184,11 +184,19 @@ Problem : Programmers 최소직사각형 lv1
 Time : n
 Solution : Search
 """
-def solution(sizes):
+def solution_20220109(sizes):
     max_width = max(max(size) for size in sizes)
     max_height = max(min(size) for size in sizes)
     return max_height * max_width
 
+"""
+Problem : Programmers 부족한 금액 계산하기 lv1
+Time : 1
+Solution : AP
+"""
+def solution_20220110(price, money, count):
+    return max(0,price*(count+1)*count//2-money)
+
 if __name__ == "__main__":
     test = [[60, 50], [30, 70], [60, 30], [80, 40]]
-    print(solution(test))
+    print(solution(3,20,4))
