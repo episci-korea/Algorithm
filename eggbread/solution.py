@@ -197,6 +197,14 @@ Solution : AP
 def solution_20220110(price, money, count):
     return max(0,price*(count+1)*count//2-money)
 
+"""
+Problem : Programmers 음양더하기 lv1
+Time : n
+Solution : Implementation
+"""
+def solution(absolutes, signs):
+    return sum(list(map(lambda x:x[0] if x[1] else -1*x[0], zip(absolutes, signs))))
+
 if __name__ == "__main__":
     test = [[60, 50], [30, 70], [60, 30], [80, 40]]
-    print(solution(3,20,4))
+    print(solution([4,7,12],[True,False,True]))
