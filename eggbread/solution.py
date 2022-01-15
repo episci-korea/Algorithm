@@ -1,4 +1,5 @@
 import time
+from summary import *
 """
 Problem : Programmers 문자열 압축 lv2
 Time : n^2
@@ -202,9 +203,24 @@ Problem : Programmers 음양더하기 lv1
 Time : n
 Solution : Implementation
 """
-def solution(absolutes, signs):
+def solution_20220111(absolutes, signs):
     return sum(list(map(lambda x:x[0] if x[1] else -1*x[0], zip(absolutes, signs))))
+
+"""
+Problem : Programmers 약수의 개수와 덧셈 lv1
+Time : n^(1/2)
+Solution : divisor
+"""
+def solution(left, right):
+    answer = 0
+    for x in range(left, right+1):
+        length = len(get_divisor(x))
+        if length % 2:
+            answer -= x
+        else:
+            answer += x
+    return answer
 
 if __name__ == "__main__":
     test = [[60, 50], [30, 70], [60, 30], [80, 40]]
-    print(solution([4,7,12],[True,False,True]))
+    print(solution(13,17))
