@@ -221,6 +221,29 @@ def solution(left, right):
             answer += x
     return answer
 
+"""
+Problem : leetcode Word Pattern Easy
+Time : n^2
+Solution : dict
+"""
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        from collections import defaultdict
+        d = defaultdict(str)
+        words = s.split()
+        if len(pattern) != len(words):
+            return False
+        for pat, word in zip(pattern, words):
+            if pat not in d:
+                if word in d.values():
+                    return False
+                d[pat] = word
+            else:
+                if d[pat] !=  word:
+                    return False
+        return True
+
 if __name__ == "__main__":
-    test = [[60, 50], [30, 70], [60, 30], [80, 40]]
-    print(solution(13,17))
+    test = [["abba","dog cat cat dog"],["aaa","aa aa aa aa"]]
+    for a,b in test:
+        print(Solution().wordPattern(a,b))
